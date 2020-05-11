@@ -2,15 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-repositories {
-    maven {
-        url "${rootDir}/uiflutter/build/host/outputs/repo"
-    }
-    maven {
-        url 'https://storage.googleapis.com/download.flutter.io'
-    }
-}
-
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -35,11 +26,6 @@ android {
     }
 
     buildTypes {
-        buildTypes {
-            profile {
-                initWith debug
-            }
-        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -50,9 +36,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    debugImplementation 'ua.com.vald_zx.uiflutter:flutter_debug:1.0'
-    profileImplementation 'ua.com.vald_zx.uiflutter:flutter_profile:1.0'
-    releaseImplementation 'ua.com.vald_zx.uiflutter:flutter_release:1.0'
+    implementation project(":flutter")
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'

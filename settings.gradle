@@ -1,2 +1,9 @@
 rootProject.name='TouchFlutterTouch'
 include ':app'
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+  settingsDir,
+  'uiflutter/.android/include_flutter.groovy'
+))
+
+include ':uiflutter'
