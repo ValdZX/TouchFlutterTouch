@@ -22,7 +22,7 @@ class LoginFragment : Fragment() {
         val manager: FragmentManager = childFragmentManager
         flutterFragment = manager.findFragmentByTag(TAG_FLUTTER_FRAGMENT) as FlutterFragment?
         if (flutterFragment == null) {
-            val newFlutterFragment = FlutterFragment.createDefault()
+            val newFlutterFragment = FlutterFragment.withNewEngine().initialRoute("/first").build<FlutterFragment>()
             flutterFragment = newFlutterFragment
             manager.beginTransaction()
                 .add(R.id.flutterContainer, newFlutterFragment, TAG_FLUTTER_FRAGMENT)
